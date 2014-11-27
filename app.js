@@ -4,7 +4,13 @@ _app = function(){
 
 	/* Internal vars */
 	var triggers	= {}
-
+	
+	/**
+	 * Call this method when page is ready
+	 * to initate the app object
+	 *
+	 * @return void
+	 **/
 	self.ready = function(){
 
 		self.win 		= jQuery(window);
@@ -15,7 +21,11 @@ _app = function(){
 		self.trigger('ready');
 	}
 
-
+	/**
+	 * Cleans up a string with a trigger name
+	 *
+	 * @return string - cleaned up trigger name
+	 **/
 	self.clean_trigger = function(trigger){
 		
 		if(!typeof trigger === 'string')
@@ -27,6 +37,12 @@ _app = function(){
 
 	}
 
+	/**
+	 * Set up a callback function on an event.
+	 * Runs every time the event is triggered.
+	 *
+	 * @return void
+	 **/
 	self.on = function(trigger, callback){
 		
 		trigger  = self.clean_trigger(trigger);
@@ -41,7 +57,14 @@ _app = function(){
 			triggers[trigger].push(callback)
 
 	}
-
+	
+	/**
+	 * Set up a callback function on an event.
+	 * The callback is only ececuted ONCE and
+	 * then it will be removed again
+	 *
+	 * @return void
+	 **/
 	self.one = function(trigger, callback){
 		
 		trigger  = self.clean_trigger(trigger);
@@ -61,6 +84,11 @@ _app = function(){
 
 	}
 
+	/**
+	 * Remove a callback from an event
+	 *
+	 * @return void
+	 **/
 	self.off = function(trigger, callback){
 		
 		var index = triggers[trigger].indexOf(callback);
@@ -69,7 +97,13 @@ _app = function(){
 		}
 
 	}
-
+	
+	/**
+	 * Trigger an event and run the callbacks
+	 * hooked to it.
+	 *
+	 * @return void
+	 **/
 	self.trigger = function(trigger, args){
 
 		trigger  = self.clean_trigger(trigger);
@@ -83,10 +117,18 @@ _app = function(){
 
 	}
 
-	self.is = function(_class){
+	/**
+	 * Helper:
+	 * This is a simple function to check if
+	 * the body of the given page has a given class
+	 *
+	 * @return void
+	 **/
+	 self.is = function(_class){
 		return self.body.hasClass(_class);
 	}
-
+	
+	// Return the app object
 	return self;
 
 }
