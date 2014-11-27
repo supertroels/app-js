@@ -2,12 +2,13 @@ app-js
 ======
 app.js helps you organize your JavaScript files by scoping everything in one object and providing easy acces to commonly used elements like window, document, body, etc.
 
-Set it up like this
-  app = new _app();
-  
-  jQuery(document).ready(function($) {
-  	app.ready();
-  });
+Set it up like this:
+
+    app = new _app();
+    
+    jQuery(document).ready(function($) {
+    	app.ready();
+    });
 
 ## How to use
 Let's say you want to add a popup modal feature to your app. You could do it this way:
