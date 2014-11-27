@@ -90,9 +90,3 @@ _app = function(){
 	return self;
 
 }
-
-app = new _app();
-
-jQuery(document).ready(function($) {
-	app.ready();
-});
