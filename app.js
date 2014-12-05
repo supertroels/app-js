@@ -131,4 +131,4 @@ _app = function(){
 	// Return the app object
 	return self;
 
-}
+};
