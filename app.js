@@ -106,7 +106,7 @@ _app = function(){
 	 **/
 	self.trigger = function(trigger, args){
 
-		trigger  = self.clean_trigger(trigger);
+		var trigger  = self.clean_trigger(trigger);
 		
 		if(typeof triggers[trigger] === 'undefined')
 			triggers[trigger] = [];
