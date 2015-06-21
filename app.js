@@ -1,6 +1,14 @@
-_app = function(){
+_app = function(_jquery){
 
 	var self 		= this;
+
+	// Set jQuery
+	self.$ 			= jQuery;
+	if(typeof _jquery !== 'undefined'){
+		self.$ = _jquery;
+		var $ = _jquery;
+	}
+
 
 	/* Internal vars */
 	var triggers	= {}
@@ -13,13 +21,23 @@ _app = function(){
 	 **/
 	self.ready = function(){
 
-		self.win 		= jQuery(window);
-		self.doc 		= jQuery(document);
-		self.body 		= jQuery('body');
-		self.html 		= jQuery('html');
+		self.win 		= $(window);
+		self.doc 		= $(document);
+		self.body 		= $('body');
+		self.html 		= $('html');
 
 		self.trigger('ready');
 	}
+
+
+	self.get_jquery = function(){
+
+		if(self.$ === false)
+			return jQuery;
+		return self.$;
+
+	}
+
 
 	/**
 	 * Cleans up a string with a trigger name
@@ -107,9 +125,9 @@ _app = function(){
 	self.trigger = function(trigger, args){
 
 		var trigger  = self.clean_trigger(trigger);
-		
+
 		if(typeof triggers[trigger] === 'undefined')
-			triggers[trigger] = [];
+			return;
 
 		for (k in triggers[trigger]){
 			triggers[trigger][k](args);
