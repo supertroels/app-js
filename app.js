@@ -109,6 +109,9 @@ _app = function(_jquery){
 	 **/
 	self.off = function(trigger, callback){
 		
+		if(typeof triggers[trigger] == 'undefined')
+			return null;
+		
 		var index = triggers[trigger].indexOf(callback);
 		if(index >= 0) {
 		    triggers[trigger].splice(index, 1);
